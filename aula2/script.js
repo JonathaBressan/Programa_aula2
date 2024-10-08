@@ -4,9 +4,9 @@ $(document).ready(function(){
         
         $.getJSON("./data.json", function(data) {
             $("#resultado1").append(data.name + ", ");
-            $("#resultado1").append(data.age + " anos");
+            $("#resultado1").append(data.age + " anos. ");
             for(let i in data.cars){
-                $("#resultado1").append(data.cars[i]);
+                $("#resultado1").append(data.cars[i] + " ");
             }
             $("#resultado1").append("<br>");
             $("#limpar").append("");
