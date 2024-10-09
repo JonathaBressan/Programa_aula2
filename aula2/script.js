@@ -1,4 +1,5 @@
 $(document).ready(function(){
+// comando do resultado1
     $("#button1").on("click", function(event){
         $.getJSON("./data.json", function(data) {
             $("#resultado1").append(data.name + ", ");
@@ -10,7 +11,7 @@ $(document).ready(function(){
             $("#limpar").append("");
         });
     });
-
+// comando do resultado2
     $("#button2").on("click", function(event){
         $.getJSON("./data2.json", function(data) {
             $("#resultado2").append(data.name + ", ");
@@ -24,12 +25,19 @@ $(document).ready(function(){
             $("#limpar").append("");
         });
     });
+// comando do resultado3
+    $("#button3").on("click", function(event){
+        $.getJSON("./data3.json", function(data) {
+            for(let i in data.results){
+                $("#resultado3").append("Genêro: " + data.results[i].gender + "<br>");
+                $("#resultado3").append("Nome: " + data.results[i].name.first + "<br>");
+                $("#resultado3").append("Email: " + data.results[i].email + "<br>");
+            }
+            $("#resultado3").append("Info: " + data.info.seed + "<br>");
+        });
+    });
 
-
-
-
-
-
+//comando para limpar
     $("#limpar").on("click", function(event){
         $("div[id^=resultado]").empty();
         
