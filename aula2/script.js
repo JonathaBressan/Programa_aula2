@@ -1,7 +1,5 @@
 $(document).ready(function(){
     $("#button1").on("click", function(event){
-        
-        
         $.getJSON("./data.json", function(data) {
             $("#resultado1").append(data.name + ", ");
             $("#resultado1").append(data.age + " anos. ");
@@ -12,6 +10,26 @@ $(document).ready(function(){
             $("#limpar").append("");
         });
     });
+
+    $("#button2").on("click", function(event){
+        $.getJSON("./data2.json", function(data) {
+            $("#resultado2").append(data.name + ", ");
+            $("#resultado2").append(data.age + " anos. <br> ");
+            for(let i in data.friends){
+                let friendName = data.friends[i].firstName + " " + data.friends[i].lastName;
+                $("#resultado2").append("Amigo " + (parseInt(i)+1) + ": " + friendName + "<br>");
+            }
+            $("#resultado2").append("Total de amigos de " + data.name + ": " + data.friends.length + "<br>" );
+            $("#resultado2").append("<br>");
+            $("#limpar").append("");
+        });
+    });
+
+
+
+
+
+
     $("#limpar").on("click", function(event){
         $("div[id^=resultado]").empty();
         
