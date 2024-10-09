@@ -1,9 +1,48 @@
+$(document).ready(function() {
+    $.getJSON("https://randomuser.me/api/?results=10&nat=br", function(data) {
+        for (var i = 0; i < data.results.length; i++) {
+            var user = data.results[i];
+            var out = "<tr>";
+            out += "<td scope='row'>" + (i + 1) + "</td>";
+            out += "<td><img src='" + user.picture.thumbnail + "' class='img-fluid rounded-circle' /></td>";
+            out += "<td>" + user.login.username + "</td>";
+            out += "<td>" + user.name.first + "</td>";
+            out += "<td>" + user.name.last + "</td>";
+            out += "<td>" + user.gender + "</td>"; // Adicionando gênero
+            out += "<td>" + user.email + "</td>";
+            out += "<td>" + user.phone + "</td>";
+            out += "<td>" + user.location.street.name + ", " + user.location.street.number + "</td>";
+            out += "<td>" + user.location.city + "</td>";
+            out += "<td>" + user.location.state + "</td>";
+            out += "<td>" + user.location.country + "</td>";
+            out += "</tr>";
+
+            $("table tbody").append(out);
+        }
+    });
+});
+
+
+
+/*
 $(document).ready(function(e){
     $.getJSON("https://randomuser.me/api/?results=10&nat=br", function(data) {
-        alert(data.results[0].gender);
+        for(var i = 0; i < data.results.length; i++){
+            var out = "<tr>";
+            out += "<td scope='row'>" + (parseInt(i)+1) + "</td>";
+            out += "<td><img src='" + data.results[i].picture.thumbnail + "' /></td>";
+            out += "<td>" + data.results[i].login.username + "</td>";
+            out += "</tr>";
+            $("table tbody").append(out);
+        }
     });
 });
     /*
+
+$(document.body).append(data.results[i].gender + " ");
+
+
+
 // comando do resultado1
     $("#button1").on("click", function(event){
         $.getJSON("./data.json", function(data) {
