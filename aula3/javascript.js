@@ -4,7 +4,7 @@ $(document).ready(function() {
             var user = data.results[i];
             var out = "<tr>";
             out += "<td scope='row'>" + (i + 1) + "</td>";
-            out += "<td><img src='" + user.picture.thumbnail + "'  />" + "<class='img-fluid rounded-circle' />"+"</td>";
+            out += "<td><img src='" + data.results[i].picture.thumbnail + "' alt='Foto' /></td>";
             out += "<td>" + user.login.username + "</td>";
             out += "<td>" + user.name.first + "</td>";
             out += "<td>" + user.name.last + "</td>";
