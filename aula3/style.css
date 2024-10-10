@@ -31,7 +31,7 @@ body {
     border-radius: 50%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
     .table-responsive {
         display: block;
         overflow-x: auto;
