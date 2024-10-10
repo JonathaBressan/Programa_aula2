@@ -4,7 +4,7 @@ $(document).ready(function() {
             var user = data.results[i];
             var out = "<tr>";
             out += "<td scope='row'>" + (i + 1) + "</td>";
-            out += "<td><img src='" + user.picture.thumbnail + "' class='img-fluid rounded-circle' /></td>";
+            out += "<td><img src='" + user.picture.thumbnail + "'  />" + "<class='img-fluid rounded-circle' />"+"</td>";
             out += "<td>" + user.login.username + "</td>";
             out += "<td>" + user.name.first + "</td>";
             out += "<td>" + user.name.last + "</td>";
@@ -25,6 +25,7 @@ $(document).ready(function() {
 
 
 /*
+<img src="https://randomuser.me/api/portraits/thumb/men/10.jpg><class=" img-fluid="" rounded-circle'="">
 $(document).ready(function(e){
     $.getJSON("https://randomuser.me/api/?results=10&nat=br", function(data) {
         for(var i = 0; i < data.results.length; i++){
