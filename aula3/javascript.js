@@ -1,10 +1,17 @@
 $(document).ready(function() {
-    $.getJSON("https://randomuser.me/api/?results=1&nat=br", function(data) {
+    $.getJSON("https://randomuser.me/api/1.4/?results=5000&nat=br", function(data) {
         $('table').dataTable( {
             "aaData": data.results,
             "bProcessing": true,
-            "columns": [
-                { data: "gender" },          // Gênero
+            "language": {
+                url: "https://cdn.datatables.net/plug-ins/2.1.8/i18n/pt-BR.json"
+            },
+           "columns": [
+                { data: null,
+                    render: function(data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1; // Calcula o número da linha
+                    }
+                },     // Gênero
                 { data: "picture.thumbnail", 
                     render: function (data) {
                         return '<img src="' + data + '" class="avatar" width="48" height="48" onerror="loadImgAsBase64(this)" />';
