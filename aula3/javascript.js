@@ -1,6 +1,40 @@
 $(document).ready(function() {
-    $.getJSON("https://randomuser.me/api/?results=10&nat=br", function(data) {
-        for (var i = 0; i < data.results.length; i++) {
+    $.getJSON("https://randomuser.me/api/?results=1&nat=br", function(data) {
+        $('table').dataTable( {
+            "aaData": data.results,
+            "bProcessing": true,
+            "columns": [
+                { data: "gender" },          // Gênero
+                { data: "picture.thumbnail", 
+                    render: function (data) {
+                        return '<img src="' + data + '" class="avatar" width="48" height="48" onerror="loadImgAsBase64(this)" />';
+                    }
+                }, // Imagem
+                { data: "login.username" },   //login
+                { data: "name.first" },      // Primeiro nome
+                { data: "name.last" },           // sobrenome
+                { data: "gender" }, // Gênero
+                { data: "email" },  // email
+                { data: "phone" },          // Telefone
+                { data: null,
+                    render: function (data){
+                        return data.location.street.name + " , " + data.location.street.number;
+                    }
+                },
+                { data: "location.city" },   // Cidade
+                { data: "location.state" },  // Estado
+                { data: "location.country" }, // País
+             
+                
+            ],
+            "initComplete": function() {
+                $('table tbody tr').each(function( index ) {
+                    $('td', this).first().html(index + 1);
+                });
+            }
+        });
+
+        /* for (var i = 0; i < data.results.length; i++) {
             var user = data.results[i];
             var out = "<tr>";
             out += "<td scope='row'>" + (i + 1) + "</td>";
@@ -24,7 +58,7 @@ $(document).ready(function() {
                     $(this).attr("src", dataURL);
                 });
             });
-        }
+        } */
     });
 });
 
